@@ -4,11 +4,23 @@ import InputText from "./InputText";
 import InputLabel from "./InputLabel";
 import InputAnnotation from "./InputAnnotation";
 
-const InputGroup = ({ label, value, onChange, annotation }) => {
+const InputGroup = ({
+  label,
+  value,
+  onChange,
+  annotation,
+  iconBefore,
+  iconAfter,
+}) => {
   return (
     <div>
       <InputLabel text={label} />
-      <InputText value={value} onChange={onChange} />
+      <InputText
+        value={value}
+        onChange={onChange}
+        iconBefore={iconBefore}
+        iconAfter={iconAfter}
+      />
       {annotation && <InputAnnotation text={annotation} />}
     </div>
   );
