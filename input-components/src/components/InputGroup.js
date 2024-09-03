@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import InputText from "./InputText";
 import InputLabel from "./InputLabel";
 import InputAnnotation from "./InputAnnotation";
+import _BaseInput from "./_BaseInput";
+import "./InputGroup.css";
 
 const InputGroup = ({
   label,
@@ -11,6 +13,12 @@ const InputGroup = ({
   annotation,
   iconBefore,
   iconAfter,
+  size,
+  state,
+  labelPosition,
+  border,
+  helperText,
+  info,
 }) => {
   return (
     <div>
@@ -20,6 +28,7 @@ const InputGroup = ({
         onChange={onChange}
         iconBefore={iconBefore}
         iconAfter={iconAfter}
+        className="input-group"
       />
       {annotation && <InputAnnotation text={annotation} />}
     </div>

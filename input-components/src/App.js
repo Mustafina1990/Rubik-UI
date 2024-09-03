@@ -4,14 +4,21 @@ import InputGroup from "./components/InputGroup";
 import searchIcon from "./assets/Search.png";
 import helpIcon from "./assets/Help-icon.png";
 import shortKeyIcon from "./assets/Shortkey.png";
+import infoIcon from "./assets/Info-icon.png";
+import _BaseInput from "./components/_BaseInput";
 
 function App() {
-  const [value, setValue] = useState("input...");
+  const [value, setValue] = useState("");
 
   return (
     <div className="app">
+      <_BaseInput />
       <InputGroup
-        label="Username"
+        label={
+          <div>
+            Email <img src={infoIcon} alt="info-icon" />
+          </div>
+        }
         value={value}
         onChange={(e) => setValue(e.target.value)}
         annotation="Please enter your username"

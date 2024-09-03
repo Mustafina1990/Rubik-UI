@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./InputText.css";
+import InputLabel from "./InputLabel";
 
 const InputText = ({
   label,
   value,
   onChange,
-  placeholder,
   hint,
   size,
   iconBefore,
@@ -14,26 +14,36 @@ const InputText = ({
   required,
   disabled,
   error,
-}) => (
-  <div className={`input-group ${size} ${error ? "error" : ""}`}>
-    <label>
-      {label} {required && <span className="required">*</span>}
-    </label>
-    <div className="input-wrapper">
-      {iconBefore && <span className="icon-before">{iconBefore}</span>}
-      <input
-        type="text"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        disabled={disabled}
-        className="input-text"
-      />
-      {iconAfter && <span className="icon-after">{iconAfter}</span>}
+  shortkey,
+  alignment,
+  border,
+}) => {
+  const [placeholder, setPlaceholder] = useState("Input...");
+
+  const handleChange = (e) => {
+    if (placeholder) {
+      setPlaceholder("");
+    }
+    onChange(e);
+  };
+  return (
+    <div className={`input-group ${size} ${error ? "error" : ""}`}>
+      <div className="input-wrapper">
+        {iconBefore && <span className="icon-before">{iconBefore}</span>}
+        <input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          placeholder={placeholder}
+          disabled={disabled}
+          className="input-text"
+        />
+        {iconAfter && <span className="icon-after">{iconAfter}</span>}
+      </div>
+      {hint && <small className="input-hint">{hint}</small>}
     </div>
-    {hint && <small className="input-hint">{hint}</small>}
-  </div>
-);
+  );
+};
 
 InputText.propTypes = {
   label: PropTypes.string,
