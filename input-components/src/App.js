@@ -6,6 +6,7 @@ import helpIcon from "./assets/Help-icon.png";
 import shortKeyIcon from "./assets/Shortkey.png";
 import infoIcon from "./assets/Info-icon.png";
 import _BaseInput from "./components/_BaseInput";
+import InputManager from "./components/InputManager";
 
 function App() {
   const [value, setValue] = useState("");
@@ -30,6 +31,7 @@ function App() {
           </div>
         }
       />
+      <InputManager />
     </div>
   );
 }
