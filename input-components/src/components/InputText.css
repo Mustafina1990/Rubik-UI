@@ -15,25 +15,31 @@
 }
 
 .input-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   padding: 5px;
 }
 
 .input-text {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 1px;
-  outline: none;
-  font-size: 16px;
+  padding-left: 2.5em; /* Adjust based on icon size */
+  padding-right: 2.5em;
 }
 
 .icon-before,
 .icon-after {
-  margin: 0 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.icon-before {
+  left: 0.5em;
+}
+
+.icon-after {
+  right: 0.5em;
 }
 
 .input-hint {
@@ -46,22 +52,57 @@
   border-color: red;
 }
 
-.extra-small .input-text {
+.input-extra-small {
+  font-size: 10px;
+  padding: 3px;
+}
+
+.input-small {
   font-size: 12px;
+  padding: 5px;
 }
 
-.small .input-text {
-  font-size: 14px;
-}
-
-.medium .input-text {
+.input-medium {
   font-size: 16px;
+  padding: 10px;
 }
 
-.large .input-text {
-  font-size: 18px;
-}
-
-.extra-large .input-text {
+.input-large {
   font-size: 20px;
+  padding: 15px;
+}
+
+.input-extra-large {
+  font-size: 24px;
+  padding: 20px;
+}
+
+.input-text-left {
+  text-align: left;
+}
+
+.input-text-right {
+  text-align: right;
+}
+
+.input-text {
+  width: 323px;
+  height: 36px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 25px;
+}
+
+.input-text:focus {
+  border-color: #66afe9;
+  outline: none;
+}
+
+.input-text.empty:focus,
+.input-text.empty {
+  border-color: red;
+}
+
+.input-text.empty:focus + .icon-before {
+  color: red;
 }

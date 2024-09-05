@@ -10,10 +10,28 @@ import InputManager from "./components/InputManager";
 
 function App() {
   const [value, setValue] = useState("");
+  const [alignment, setAlignment] = useState("left");
+  const [size, setSize] = useState("medium");
+
+  const handleAlignmentChange = (e) => {
+    setAlignment(e.target.value);
+  };
+
+  const handleSizeChange = (e) => {
+    setSize(e.target.value);
+  };
 
   return (
     <div className="app">
-      <_BaseInput />
+      <_BaseInput
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        alignment={alignment}
+        size={size}
+        disabled={false}
+        error={false}
+        onSizeChange={handleSizeChange}
+      />
       <InputGroup
         label={
           <div>
@@ -21,6 +39,7 @@ function App() {
           </div>
         }
         value={value}
+        alignment={alignment}
         onChange={(e) => setValue(e.target.value)}
         annotation="Please enter your username"
         iconBefore={<img src={searchIcon} alt="serch-icon" />}
@@ -30,8 +49,15 @@ function App() {
             <img src={shortKeyIcon} alt="shortKey-icon" />
           </div>
         }
+        size={size}
+        onSizeChange={handleSizeChange}
       />
-      <InputManager />
+      <InputManager
+        alignment={alignment}
+        onAlignmentChange={handleAlignmentChange}
+        size={size}
+        onSizeChange={handleSizeChange}
+      />
     </div>
   );
 }

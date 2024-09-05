@@ -5,3 +5,49 @@
 .input-right {
   text-align: right;
 }
+
+.input-group.extra-small,
+.input-extra-small {
+  font-size: 10px;
+  padding: 3px;
+}
+
+.input-group.small,
+.input-small {
+  font-size: 12px;
+  padding: 5px;
+}
+
+.input-group.medium,
+.input-medium {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.input-group.large,
+.input-large {
+  font-size: 20px;
+  padding: 15px;
+}
+
+.input-group.extra-large,
+.input-extra-large {
+  font-size: 24px;
+  padding: 20px;
+}
+
+.input-left {
+  text-align: left;
+}
+
+.input-center {
+  text-align: center;
+}
+
+.input-right {
+  text-align: right;
+}
+
+.input-group.error {
+  border: 1px solid red;
+}

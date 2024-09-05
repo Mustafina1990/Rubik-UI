@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const _BaseInput = ({ value, onChange, alignment, size, disabled, error }) => {
   const [placeholder, setPlaceholder] = useState("Input...");
+  console.log(`"size": ${size}`);
+
+  useEffect(() => {
+    console.log(`Class names: input-group ${size} ${error ? "error" : ""}`);
+  }, [size, error]);
 
   const handleChange = (e) => {
     if (placeholder) {
@@ -18,7 +23,7 @@ const _BaseInput = ({ value, onChange, alignment, size, disabled, error }) => {
         onChange={handleChange}
         placeholder={placeholder}
         disabled={disabled}
-        className={`input-${alignment}`}
+        className={`input-${alignment} input-${size}`}
         style={{ textAlign: alignment }}
       />
     </div>
@@ -26,7 +31,13 @@ const _BaseInput = ({ value, onChange, alignment, size, disabled, error }) => {
 };
 
 _BaseInput.propTypes = {
-  size: PropTypes.oneOf(["small", "medium", "large"]),
+  size: PropTypes.oneOf([
+    "extra-small",
+    "small",
+    "medium",
+    "large",
+    "extra-large",
+  ]),
   alignment: PropTypes.oneOf(["left", "right"]),
   border: PropTypes.string,
 };

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./InputText.css";
-import InputLabel from "./InputLabel";
 
 const InputText = ({
-  label,
   value,
   onChange,
   hint,
@@ -19,13 +17,31 @@ const InputText = ({
   border,
 }) => {
   const [placeholder, setPlaceholder] = useState("Input...");
+  const [isEmpty, setIsEmpty] = useState(!value);
+
+  const handleFocus = (e) => {
+    if (!e.target.value) {
+      setIsEmpty(true);
+    }
+  };
+
+  const handleBlur = (e) => {
+    if (!e.target.value) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+    }
+  };
 
   const handleChange = (e) => {
-    if (placeholder) {
-      setPlaceholder("");
-    }
     onChange(e);
+    if (!e.target.value) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+    }
   };
+
   return (
     <div className={`input-group ${size} ${error ? "error" : ""}`}>
       <div className="input-wrapper">
@@ -33,10 +49,15 @@ const InputText = ({
         <input
           type="text"
           value={value}
-          onChange={handleChange}
+          size={size}
+          onChange={onChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           placeholder={placeholder}
           disabled={disabled}
-          className="input-text"
+          required={required}
+          className={`input-text input-${size} ${isEmpty ? "empty" : ""}`}
+          style={{ textAlign: alignment }}
         />
         {iconAfter && <span className="icon-after">{iconAfter}</span>}
       </div>
@@ -51,6 +72,7 @@ InputText.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   hint: PropTypes.string,
+  alignment: PropTypes.oneOf(["left", "right"]),
   size: PropTypes.oneOf([
     "extra-small",
     "small",
@@ -67,6 +89,7 @@ InputText.propTypes = {
 
 InputText.defaultProps = {
   size: "medium",
+  alignment: "left",
   required: false,
   disabled: false,
   error: false,
