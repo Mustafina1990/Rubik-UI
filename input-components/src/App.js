@@ -22,8 +22,9 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <_BaseInput
+    <div className="container">
+      <div className="input-group-wrapper">
+        {/* <_BaseInput
         value={value}
         onChange={(e) => setValue(e.target.value)}
         alignment={alignment}
@@ -31,33 +32,37 @@ function App() {
         disabled={false}
         error={false}
         onSizeChange={handleSizeChange}
-      />
-      <InputGroup
-        label={
-          <div>
-            Email <img src={infoIcon} alt="info-icon" />
-          </div>
-        }
-        value={value}
-        alignment={alignment}
-        onChange={(e) => setValue(e.target.value)}
-        annotation="Please enter your username"
-        iconBefore={<img src={searchIcon} alt="serch-icon" />}
-        iconAfter={
-          <div className="icons-wrapper">
-            <img src={helpIcon} alt="help-icon" />
-            <img src={shortKeyIcon} alt="shortKey-icon" />
-          </div>
-        }
-        size={size}
-        onSizeChange={handleSizeChange}
-      />
-      <InputManager
-        alignment={alignment}
-        onAlignmentChange={handleAlignmentChange}
-        size={size}
-        onSizeChange={handleSizeChange}
-      />
+      /> */}
+        <InputGroup
+          label={
+            <div>
+              Email <img src={infoIcon} alt="info-icon" />
+            </div>
+          }
+          value={value}
+          alignment={alignment}
+          onChange={(e) => setValue(e.target.value)}
+          annotation="Please enter your username"
+          iconBefore={<img src={searchIcon} alt="serch-icon" />}
+          iconAfter={
+            <div className="icons-wrapper">
+              <img src={helpIcon} alt="help-icon" />
+              <img src={shortKeyIcon} alt="shortKey-icon" />
+            </div>
+          }
+          size={size}
+          onSizeChange={handleSizeChange}
+        />
+        <div className="input-manager-wrapper">
+          <InputManager
+            alignment={alignment}
+            onAlignmentChange={handleAlignmentChange}
+            size={size}
+            onSizeChange={handleSizeChange}
+          />
+        </div>
+      </div>
+      <footer className="footer">Footer Content</footer>
     </div>
   );
 }

@@ -22,7 +22,7 @@
 }
 
 .input-text {
-  padding-left: 2.5em; /* Adjust based on icon size */
+  padding-left: 2.5em;
   padding-right: 2.5em;
 }
 
@@ -90,7 +90,7 @@
   height: 36px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 8px 25px;
+  padding: 8px 55px 8px 25px;
 }
 
 .input-text:focus {
